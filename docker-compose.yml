@@ -60,7 +60,7 @@ services:
      - discovery-server
     entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
     ports:
-     - 8080:8080
+     - 8089:8080
 
   tracing-server:
     image: openzipkin/zipkin
@@ -89,7 +89,7 @@ services:
     container_name: grafana-server
     mem_limit: 256M
     ports:
-    - 3000:3000
+    - 3001:3001
 
   prometheus-server:
     build: ./docker/prometheus
