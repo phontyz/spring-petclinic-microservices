@@ -11,6 +11,17 @@ pipeline {
                 sh "docker image prune -af"
             }
         }
+        stage('Tests') {
+            steps {
+                sh "./mvnw test"
+            }
+            
+            post {
+                always {
+                    junit "**/Tests/TEST-*.xml"
+                }
+            }
+        }
         stage('Compiling application') {
             steps {
                 sh "./mvnw clean install -P buildDocker"
