@@ -15,12 +15,6 @@ pipeline {
             steps {
                 sh "./mvnw test"
             }
-            
-            post {
-                always {
-                    junit "**/Tests/TEST-*.xml"
-                }
-            }
         }
         stage('Compiling application') {
             steps {
